@@ -59,12 +59,19 @@ class Owner
   end
   
   def sell_pets
-    self.pets.each do |type, animals|
-      animals.each do |animal| 
-        animal.mood = "nervous"
+    pets = self.dogs + self.cats
+
+    pets.each do |pet|
+      pet.mood = "nervous"
+      pet.owner = nil
+      
     end
-    type.clear
+   @@pets.each do |pet, arr|
+      arr.clear
+ end
+ end
+  
+ def list_pets
+    "I have #{@@pets[:dogs].length} dog(s), and #{@@pets[:cats].length} cat(s)."
   end
-  end
- 
 end
