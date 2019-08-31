@@ -10,7 +10,6 @@ class Owner
   @name = name
   @species = species
   @@all << self
-  @pets = {:dogs => [], :cats => []}
  end 
 
  def species
@@ -68,21 +67,15 @@ def sell_pets
   Dog.all.each do |dog| 
     dog.mood = "nervous"
   end 
-   Dog.all.each do |dog| 
-     dog.owner = nil
- end 
-   Cat.all.each do |cat| 
-     cat.owner = nil
- end 
+  Dog.all.each do |dog| 
+    dog.owner = nil
+  end 
+  Cat.all.each do |cat| 
+    cat.owner = nil
+  end 
 end 
 
  def list_pets
-   "I have #{Dog.all.size / 10} dog(s), and #{Cat.all.size / 10} cat(s)."
-   
+   "I have #{self.dogs.count} dog(s), and #{self.cats.count} cat(s)."
  end 
-
-  
-  
-  
-
 end 
