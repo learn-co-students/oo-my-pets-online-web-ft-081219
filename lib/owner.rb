@@ -47,14 +47,24 @@ class Owner
   end
   
   def walk_dogs
-    @@pets.map do |pet, array|
-      if pet == :dogs
-        array.collect do |dog|
-          dog.mood = "happy"
-        end
-        # binding.pry
-      end
+    self.dogs.each do |dog| 
+      dog.mood = "happy" 
     end
   end
   
+  def feed_cats 
+    self.cats.each do |cat|
+      cat.mood = "happy"
+    end 
+  end
+  
+  def sell_pets
+    self.pets.each do |type, animals|
+      animals.each do |animal| 
+        animal.mood = "nervous"
+    end
+    type.clear
+  end
+  end
+ 
 end
