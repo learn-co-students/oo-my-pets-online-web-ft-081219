@@ -1,7 +1,7 @@
 require "pry" 
 class Owner
   
-  attr_accessor :pets
+  attr_accessor :pets, :cat, :dog 
   attr_reader :name, :species 
   @@all = []
   
@@ -9,8 +9,6 @@ class Owner
     @name = name 
     @species = "human"
     @@all << self 
-    @cat = []
-    @dog = []
   end
   
   def say_species
@@ -29,9 +27,9 @@ class Owner
     @@all = []
   end 
   
-  def cats
-    @cat 
-  end 
+  def cats 
+    Cat.all.select {|cat| cat.owner == self}
+  end
   
   def buy_cat(name)
     Cat.new(name, self) 
@@ -41,9 +39,10 @@ class Owner
     self.cats.each {|f| f.mood = "happy"}
   end 
   
-  def dogs 
-    @dog 
-  end 
+  def dogs
+    Dog.all.select {|dog| dog.owner == self}
+  end
+  
   
   def buy_dog(name)
     Dog.new(name, self)
@@ -59,9 +58,10 @@ class Owner
         @pets.each do |pet| 
         pet.mood = "nervous"
         pet.owner = nil 
-        # pet.owner.pets.clear
     end 
-    # @pets.clear 
   end 
-
+  
+  def list_pets
+    "I have #{self.dogs.count} dog(s), and #{self.cats.count} cat(s)."
+  end 
 end
