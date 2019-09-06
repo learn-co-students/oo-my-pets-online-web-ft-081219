@@ -60,10 +60,12 @@ class Owner
     
     Dog.all.each do |dogs|
     dogs.mood = "nervous"
+    dogs.owner = nil 
     end 
     
     Cat.all.each do |cats|
     cats.mood = "nervous"
+    cats.owner = nil
     end 
   end 
 
