@@ -60,13 +60,22 @@ class Owner
     
     Dog.all.each do |dogs|
     dogs.mood = "nervous"
-    dogs.owner = nil 
+    dogs.owner = nil
+  
     end 
     
     Cat.all.each do |cats|
     cats.mood = "nervous"
     cats.owner = nil
     end 
+    
+    dogs.clear
+    cats.clear
+  end 
+
+  def list_pets
+    "I have #{self.dogs.count} dog(s), and #{self.cats.count} cat(s)."
+    #binding.pry
   end 
 
 end
